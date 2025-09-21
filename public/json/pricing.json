@@ -1,0 +1,46 @@
+{
+  "waNumber": "6285863308655",
+  "section": {
+    "tag": "Pricing",
+    "title": "Paket Fotografi Profesional",
+    "description": "Pilih paket yang sesuai dengan kebutuhan Anda, mulai dari sesi foto sederhana hingga dokumentasi skala besar. Setiap paket dirancang untuk menghadirkan kualitas terbaik dari Env Lens Studio."
+  },
+  "plans": [
+    {
+      "title": "Basic",
+      "price": "Rp 2.500.000",
+      "description": "Paket ideal untuk sesi foto sederhana & intimate.",
+      "features": [
+        "Durasi 3 jam sesi foto",
+        "10 Foto hasil editing profesional",
+        "1 Fotografer",
+        "Resolusi tinggi siap cetak"
+      ]
+    },
+    {
+      "title": "Premium",
+      "price": "Rp 5.000.000",
+      "description": "Paket lengkap untuk event & kebutuhan komersial.",
+      "features": [
+        "Durasi 6 jam sesi foto",
+        "25 Foto hasil editing profesional",
+        "2 Fotografer",
+        "Video dokumentasi singkat",
+        "Akses file full HD"
+      ],
+      "highlight": true
+    },
+    {
+      "title": "Exclusive",
+      "price": "Rp 10.000.000",
+      "description": "Pilihan terbaik untuk event besar & produksi skala tinggi.",
+      "features": [
+        "Durasi seharian penuh",
+        "50+ Foto hasil editing profesional",
+        "3 Fotografer + 1 Videografer",
+        "Album cetak eksklusif",
+        "Video cinematic full HD"
+      ]
+    }
+  ]
+}

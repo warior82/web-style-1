@@ -1,7 +1,7 @@
 
 import { ShuffleHero } from "@/components/ui/shuffle-grid";
 import { ProfileSection } from "@/components/ProfileSection";
-import { PricingSection } from "@/components/PricingSection";
+import { PricingSection } from "./Components/PricingSelection";
 import { ContactSection } from "@/components/ContactSection"
 
 export default function Home() {

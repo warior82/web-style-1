@@ -19,12 +19,7 @@ interface NavbarProps {
 }
 
 const Navbar = ({ 
-  items = [
-    { name: "Beranda", href: "#", icon: Home },
-    { name: "Tentang", href: "#about", icon: User },
-    { name: "Portfolio", href: "#portfolio", icon: Briefcase },
-    { name: "Kontak", href: "#contact", icon: FileText }
-  ],
+  items = [],
   logo,
   className 
 }: NavbarProps) => {
@@ -38,11 +33,9 @@ const Navbar = ({
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50)
     }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
   }, [])
-
-
 
   return (
     <div className="fixed top-0 left-0 right-0 flex justify-center w-full py-6 px-4 z-50">
@@ -59,9 +52,7 @@ const Navbar = ({
         transition={{ duration: 0.5 }}
       >
         {/* Logo */}
-        <div className="flex items-center">
-          {logo}
-        </div>
+        <div className="flex items-center">{logo}</div>
         
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
@@ -102,7 +93,7 @@ const Navbar = ({
           ))}
         </nav>
 
-        {/* Desktop CTA Button */}
+        {/* Desktop CTA */}
         <motion.div
           className="hidden md:block"
           initial={{ opacity: 0, x: 20 }}
@@ -119,7 +110,7 @@ const Navbar = ({
           </a>
         </motion.div>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Toggle */}
         <motion.button 
           className="md:hidden flex items-center p-2 rounded-full hover:bg-accent transition-colors" 
           onClick={toggleMenu} 
@@ -151,7 +142,7 @@ const Navbar = ({
         </motion.button>
       </motion.div>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -218,21 +209,29 @@ export default function Nav() {
   } | null>(null);
 
   useEffect(() => {
-    fetch('/Json/Nav.json')
-      .then(res => res.json())
-      .then(data => setNavData(data));
+    fetch("/json/Nav.json") 
+      .then(res => {
+        if (!res.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return res.json();
+      })
+      .then(data => {
+        if (data) setNavData(data)
+      })
+      .catch(error => console.error("Error fetching nav data:", error));
   }, []);
 
-  const navItems = navData?.navItems.map(item => {
+  const navItems = navData?.navItems?.map(item => {
     const icons = {
-      "Beranda": Home,
-      "Tentang": User,
-      "Tim": Briefcase,
-      "Harga": FileText,
-      "Kontak": FileText
+      Beranda: Home,
+      Tentang: User,
+      Tim: Briefcase,
+      Harga: FileText,
+      Kontak: FileText,
     };
     return { ...item, icon: icons[item.name as keyof typeof icons] };
-  }) || [];
+  }) ?? [];
 
   const defaultLogo = (
     <motion.div
@@ -243,9 +242,13 @@ export default function Nav() {
       transition={{ duration: 0.3 }}
     >
       <div className="w-8 h-8 bg-gradient-to-br from-primary to-primary/60 rounded-full flex items-center justify-center">
-        <span className="text-primary-foreground font-bold text-sm">{navData?.logo.initial || 'E'}</span>
+        <span className="text-primary-foreground font-bold text-sm">
+          {navData?.logo?.initial || "E"}
+        </span>
       </div>
-      <span className="font-semibold text-lg tracking-tight text-foreground">{navData?.logo.text || 'Env Lens'}</span>
+      <span className="font-semibold text-lg tracking-tight text-foreground">
+        {navData?.logo?.text || "Env Lens"}
+      </span>
     </motion.div>
   );
 
