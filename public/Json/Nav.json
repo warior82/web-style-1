@@ -1,0 +1,17 @@
+{
+  "logo": {
+    "initial": "E",
+    "text": "Env Lens"
+  },
+  "navItems": [
+    { "name": "Beranda", "href": "/" },
+    { "name": "Tentang", "href": "/#about" },
+    { "name": "Tim", "href": "/Team" },
+    { "name": "Harga", "href": "/#Harga" },
+    { "name": "Kontak", "href": "/#Kontak" }
+  ],
+  "cta": {
+    "text": "Hubungi Kami",
+    "href": "/#Kontak"
+  }
+}
